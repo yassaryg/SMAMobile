@@ -3,6 +3,7 @@ package com.example.smamobile;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -187,17 +188,31 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+
+            Intent menu = new Intent(this, Menu.class);
+            startActivity(menu);
+
         }
     }
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        String admin = "admin@admin.com";
+        if(email.equals(admin)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        String admin = "12345";
+        if(password.equals(admin)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
