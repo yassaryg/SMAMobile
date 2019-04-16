@@ -189,7 +189,7 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
 
-            Intent menu = new Intent(this, Menu.class);
+            Intent menu = new Intent(this, MenuDrawer.class);
             startActivity(menu);
 
         }
