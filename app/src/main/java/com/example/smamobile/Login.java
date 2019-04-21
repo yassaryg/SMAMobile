@@ -195,10 +195,10 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
         }
     }
 
-    private boolean isEmailValid(String email) {
+    private boolean isEmailValid(String codigo) {
         //TODO: Replace this with your own logic
-        String admin = "admin@admin.com";
-        if(email.equals(admin)){
+        String admin = "200120094";
+        if(codigo.equals(admin)){
             return true;
         }else{
             return false;
