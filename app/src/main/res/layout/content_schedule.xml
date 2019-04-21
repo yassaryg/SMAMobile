@@ -8,4 +8,13 @@
     tools:context=".Schedule"
     tools:showIn="@layout/app_bar_schedule">
 
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="393dp"
+        android:layout_height="320dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

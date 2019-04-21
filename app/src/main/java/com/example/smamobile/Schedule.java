@@ -1,8 +1,10 @@
 package com.example.smamobile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,9 +15,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.CalendarView;
 
 public class Schedule extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = "Schedule";
+
+    private CalendarView mCalendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,17 @@ public class Schedule extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        mCalendarView = (CalendarView)findViewById(R.id.calendarView);
+
+        mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
+                String date = i + "/" + i1 + "/" + i2;
+                Log.d(TAG, "onSelectedDayChange : date "+date);
+            }
+        });
     }
 
     @Override
@@ -78,13 +95,20 @@ public class Schedule extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
+        if (id == R.id.nav_camera) {
+            //Calificaciones
+            Intent grades = new Intent(this, Grades.class);
+            startActivity(grades);
+
+
         } else if (id == R.id.nav_gallery) {
+            Intent schedule = new Intent(this, Schedule.class);
+            startActivity(schedule);
+
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
@@ -95,5 +119,8 @@ public class Schedule extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
     }
+
+
 }
